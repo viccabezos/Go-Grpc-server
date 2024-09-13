@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "/victoria/simplylive/golang/go-crud";
+
+package invoicer;
+
+service Invoicer {
+    rpc Create(CreateRequest) returns (CreateResponse) {}
+}
+
+message Amount {
+    bytes pdf = 1;
+    bytes doc = 2;
+}
+
+message CreateRequest {
+    int64 amount = 1;
+    string currency = 2;
+}
+
+message CreateResponse {
+    Amount mount = 1;  // Should this be "Amount amount" instead of "Amount mount"?
+    string from = 2;
+    string to = 3;
+}
